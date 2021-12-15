@@ -1,6 +1,10 @@
 # RegistrationForm
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.4.
+Angular CLI: 12.2.14
+Node: 14.17.6
+Package Manager: npm 6.14.15
+OS: win32 x64
 
 ## Development server
 

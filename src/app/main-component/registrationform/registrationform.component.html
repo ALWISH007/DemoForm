@@ -1,0 +1,187 @@
+<div class="navbar" fxLayout="row" fxLayoutAlign="space-between center">
+  <div fxFlex="40">
+    <img
+      src="https://bradscoin.com/wp-content/uploads/2021/10/brads-international-1024x1024-1-e1633511635320.png"
+      alt="Italian Trulli"
+      style="width: 50px; height: 30px"
+    />
+  </div>
+  <div fxFlex="80"></div>
+</div>
+
+<div class="main-component" fxLayout="row " fxLayoutAlign="space-around center">
+  <div>
+    <img
+      src="https://www.staralliance.com/documents/20184/357736461/hero+cp.jpg/6116004d-fd38-d793-4429-149129e3247d?t=1500468943000"
+      alt="Italian Trulli"
+    />
+  </div>
+  <div>
+    <h1>Create an Account</h1>
+    <h3>Its quick and easy!</h3>
+    <mat-card>
+      <form
+        [formGroup]="RegistrationForm"
+        (ngSubmit)="onSubmit()"
+        fxLayout="column"
+        fxLayoutAlign="space-evenly stretch"
+      >
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label for="firstname">First Name</mat-label>
+            <input
+              matInput
+              type="text"
+              id="firstname"
+              name="firstname"
+              formControlName="first_name"
+            />
+            <mat-error
+              *ngIf="RegistrationForm.hasError('required', 'first_name')"
+              >First Name is required</mat-error
+            >
+            <mat-error
+              *ngIf="RegistrationForm.hasError('pattern', 'first_name')"
+              >Invalid First Name</mat-error
+            >
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label for="lastname">Last Name</mat-label>
+            <input
+              matInput
+              type="text"
+              id="lastname"
+              name="lastname"
+              formControlName="last_name"
+            />
+            <mat-error
+              *ngIf="RegistrationForm.hasError('required', 'last_name')"
+              >Last Name is required</mat-error
+            >
+            <mat-error *ngIf="RegistrationForm.hasError('pattern', 'last_name')"
+              >Invalid Last Name</mat-error
+            >
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label for="email">Email</mat-label>
+            <input
+              matInput
+              type="text"
+              id="email"
+              name="email"
+              formControlName="email"
+            />
+            <mat-error *ngIf="RegistrationForm.hasError('required', 'email')"
+              >email is required</mat-error
+            >
+            <mat-error *ngIf="RegistrationForm.hasError('email', 'email')"
+              >Invalid email</mat-error
+            >
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label for="mobile">Phone</mat-label>
+            <input
+              matInput
+              #input
+              type="text"
+              id="mobile"
+              name="mobile"
+              formControlName="mobile"
+            />
+            <mat-error *ngIf="RegistrationForm.hasError('required', 'mobile')"
+              >mobile number is required</mat-error
+            >
+            <mat-error *ngIf="RegistrationForm.hasError('pattern', 'mobile')"
+              >Please, Enter 10 digit Mobile Number.</mat-error
+            >
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label for="password">Password</mat-label>
+            <input
+              matInput
+              type="text"
+              placeholder="password"
+              formControlName="password"
+              id="password"
+              name="password"
+            />
+            <mat-error *ngIf="RegistrationForm.hasError('required', 'password')"
+              >password is required</mat-error
+            >
+            <mat-error *ngIf="RegistrationForm.hasError('pattern', 'password')"
+              >Invalid password format</mat-error
+            >
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label for="confirmpassword">Confirm Password</mat-label>
+            <input
+              matInput
+              type="text"
+              placeholder="Confirm password"
+              formControlName="confirm_password"
+              id="confirmpassword"
+              name="confirmpassword"
+            />
+            <mat-error
+              *ngIf="RegistrationForm.hasError('required', 'confirm_password')"
+              >Confirm password is required</mat-error
+            >
+            <mat-error>password does not match</mat-error>
+          </mat-form-field>
+        </p>
+        <p></p>
+
+        <p>
+          <mat-radio-group
+            aria-label="Gender"
+            labelPosition="before"
+            formControlName="gender"
+          >
+            <mat-radio-button value="male">Male</mat-radio-button>
+            <mat-radio-button value="female">Female</mat-radio-button>
+            <mat-radio-button value="others">Others</mat-radio-button>
+          </mat-radio-group>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>mm/dd/yyyy</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              formControlName="birth_day"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </p>
+
+        <p>
+          <button
+            type="submit"
+            [disabled]="!RegistrationForm.valid"
+            mat-raised-button
+            color="basic"
+          >
+            Submit
+          </button>
+        </p>
+      </form>
+    </mat-card>
+  </div>
+</div>

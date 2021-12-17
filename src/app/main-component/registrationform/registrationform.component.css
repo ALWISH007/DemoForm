@@ -3,5 +3,9 @@
   height:50px;
 }
 .main-component{
-background-color: cadetblue;
+background-color:rgb(99, 87, 87);
 }
+.mat-form-field{
+  width: 425px;
+}
+

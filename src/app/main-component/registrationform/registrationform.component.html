@@ -6,17 +6,17 @@
       style="width: 50px; height: 30px"
     />
   </div>
-  <div fxFlex="80"></div>
+  <!-- <div fxFlex="70"></div> -->
 </div>
 
 <div class="main-component" fxLayout="row " fxLayoutAlign="space-around center">
-  <div>
+  <div fxFlex="70">
     <img
       src="https://www.staralliance.com/documents/20184/357736461/hero+cp.jpg/6116004d-fd38-d793-4429-149129e3247d?t=1500468943000"
       alt="Italian Trulli"
     />
   </div>
-  <div>
+  <div fxFlex="30">
     <h1>Create an Account</h1>
     <h3>Its quick and easy!</h3>
     <mat-card>
@@ -25,6 +25,7 @@
         (ngSubmit)="onSubmit()"
         fxLayout="column"
         fxLayoutAlign="space-evenly stretch"
+        novalidate
       >
         <p>
           <mat-form-field appearance="outline">
@@ -33,7 +34,7 @@
               matInput
               type="text"
               id="firstname"
-              name="firstname"
+              name="first_name"
               formControlName="first_name"
             />
             <mat-error
@@ -54,7 +55,7 @@
               matInput
               type="text"
               id="lastname"
-              name="lastname"
+              name="last_name"
               formControlName="last_name"
             />
             <mat-error
@@ -80,7 +81,7 @@
             <mat-error *ngIf="RegistrationForm.hasError('required', 'email')"
               >email is required</mat-error
             >
-            <mat-error *ngIf="RegistrationForm.hasError('email', 'email')"
+            <mat-error *ngIf="RegistrationForm.hasError('pattern', 'email')"
               >Invalid email</mat-error
             >
           </mat-form-field>
@@ -109,7 +110,7 @@
             <mat-label for="password">Password</mat-label>
             <input
               matInput
-              type="text"
+              type="password"
               placeholder="password"
               formControlName="password"
               id="password"
@@ -119,7 +120,9 @@
               >password is required</mat-error
             >
             <mat-error *ngIf="RegistrationForm.hasError('pattern', 'password')"
-              >Invalid password format</mat-error
+              >Password must contain minimum eight characters, at least one
+              uppercase letter, one lowercase letter, one number and one special
+              character</mat-error
             >
           </mat-form-field>
         </p>
@@ -129,32 +132,40 @@
             <mat-label for="confirmpassword">Confirm Password</mat-label>
             <input
               matInput
-              type="text"
+              type="password"
               placeholder="Confirm password"
               formControlName="confirm_password"
               id="confirmpassword"
-              name="confirmpassword"
+              name="confirm_password"
             />
             <mat-error
               *ngIf="RegistrationForm.hasError('required', 'confirm_password')"
               >Confirm password is required</mat-error
             >
-            <mat-hint>Re-type password</mat-hint>
+            <mat-error
+              *ngIf="RegistrationForm.hasError('mustmatch', 'confirm_password')"
+              >Confirm password did not match</mat-error
+            >
+            <mat-hint>Re-type password here</mat-hint>
           </mat-form-field>
         </p>
         <p></p>
 
+        <label id="Gender">Gender*</label>
         <p>
           <mat-radio-group
             aria-label="Gender"
             labelPosition="before"
             formControlName="gender"
+            name="gender"
           >
             <mat-radio-button value="male">Male</mat-radio-button>
             <mat-radio-button value="female">Female</mat-radio-button>
             <mat-radio-button value="others">Others</mat-radio-button>
           </mat-radio-group>
         </p>
+
+        <label id="birthday">Birthday*</label>
         <p>
           <mat-form-field appearance="outline">
             <mat-label>mm/dd/yyyy</mat-label>
@@ -162,12 +173,22 @@
               matInput
               [matDatepicker]="picker"
               formControlName="birth_day"
+              name="birth_day"
+              [max]="maxdate"
             />
             <mat-datepicker-toggle
               matSuffix
               [for]="picker"
             ></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
+            <mat-error
+              *ngIf="RegistrationForm.hasError('required', 'birth_day')"
+            >
+              Valid date is required</mat-error
+            >
+            <!-- <mat-error *ngIf="RegistrationForm.hasError('pattern', 'birth_day')"
+            >Invalid date</mat-error
+          > -->
           </mat-form-field>
         </p>
 

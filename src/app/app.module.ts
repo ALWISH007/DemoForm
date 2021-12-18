@@ -15,6 +15,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
 @NgModule({
   declarations: [AppComponent, RegistrationformComponent],
   imports: [
@@ -32,6 +33,7 @@ import {MatCardModule} from '@angular/material/card';
     MatButtonModule,
     MatNativeDateModule,
     MatCardModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

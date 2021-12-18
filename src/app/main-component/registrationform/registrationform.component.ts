@@ -31,6 +31,7 @@ export class RegistrationformComponent implements OnInit {
           Validators.required,
           // @TODO REGEX FOR PHONE NUMBER
           Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$'),
+          // Validators.pattern(/(?:(\+91)[ -]?\(?(\d{3})\)?[ -]?(\d{3})[ -]?(\d{4})/g)
         ]),
         email: new FormControl('', [
           Validators.required,
